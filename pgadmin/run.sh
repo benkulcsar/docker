@@ -10,6 +10,3 @@ docker run \
     -e PGADMIN_DEFAULT_PASSWORD="${PGADMIN_PASSWORD}" \
     -v "${SCRIPT_DIR}"/data/pgadmin:/var/lib/pgadmin \
     dpage/pgadmin4
-    
-
-

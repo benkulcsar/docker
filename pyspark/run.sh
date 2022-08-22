@@ -11,6 +11,3 @@ docker run \
     -p 8888:8888 \
     -v "${SCRIPT_DIR}"/data:/home/jovyan/work \
     pyspark-notebook-aws
-    
-
-
