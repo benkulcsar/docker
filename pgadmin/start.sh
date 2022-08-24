@@ -3,6 +3,8 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 docker run \
+    --name pgadmin \
+    -d \
     -it \
     --rm \
     -p 8080:80 \
