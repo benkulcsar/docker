@@ -3,6 +3,8 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 docker run \
+    --name pyspark-notebook \
+    -d \
     -it \
     --rm \
     -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
@@ -11,3 +13,5 @@ docker run \
     -p 8888:8888 \
     -v "${SCRIPT_DIR}"/data:/home/jovyan/work \
     pyspark-notebook-aws
+
+docker logs -f pyspark-notebook
