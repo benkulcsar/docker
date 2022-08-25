@@ -9,13 +9,16 @@ then
 fi
 
 docker run \
-    --name pgadmin \
+    --name postgres \
     -d \
     -it \
     --rm \
-    -p 8080:80 \
+    -p 5432:5432 \
     --network="doc-net" \
-    -e PGADMIN_DEFAULT_EMAIL="${PGADMIN_EMAIL}" \
-    -e PGADMIN_DEFAULT_PASSWORD="${PGADMIN_PASSWORD}" \
-    -v "${SCRIPT_DIR}"/data/pgadmin:/var/lib/pgadmin \
-    dpage/pgadmin4
+    -e POSTGRES_USER="${LOCAL_POSTGRES_USER}" \
+    -e POSTGRES_PASSWORD="${LOCAL_POSTGRES_PASSWORD}" \
+    -e PGDATA=/var/lib/postgresql/data/pgdata \
+    -v "${SCRIPT_DIR}"/data:/var/lib/postgresql/data \
+    postgres:12.8
+
+
