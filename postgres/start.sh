@@ -2,6 +2,8 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+mkdir -p "${SCRIPT_DIR}"/data
+
 if ! docker network ls | grep -q "doc-net";
 then
   echo Creating docker bridge
