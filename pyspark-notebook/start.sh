@@ -2,8 +2,10 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+mkdir -p "${SCRIPT_DIR}"/data
+
 docker run \
-    --name pyspark-notebook \
+    --name pyspark-notebook-aws \
     -d \
     -it \
     --rm \
@@ -14,4 +16,4 @@ docker run \
     -v "${SCRIPT_DIR}"/data:/home/jovyan/work \
     pyspark-notebook-aws
 
-docker logs -f pyspark-notebook
+docker logs -f pyspark-notebook-aws
