@@ -38,6 +38,17 @@ services:
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
       - KAFKA_CLUSTERS_0_ZOOKEEPER=localhost:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
+  schemaregistry:
+    image: confluentinc/cp-schema-registry:7.1.0
+    restart: always
+    depends_on:
+      - zookeeper
+    environment:
+      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=PLAINTEXT://kafka:9092
+      - SCHEMA_REGISTRY_HOST_NAME=localhost
+      - SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8081
+    ports:
+      - 8081:8081
 
 volumes:
   zookeeper_data:
